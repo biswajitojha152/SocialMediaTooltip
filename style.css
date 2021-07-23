@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  background: wheat;
+}
+.wrapper{
+    display: flex;
+    width: 20rem;
+    font-size: 1.5rem;
+    justify-content: space-between;
+    
+}
+[data-tooltip]{
+  /* Variables  */
+  --arrow-length:16px; 
+  --scale:0;
+  --transition: .3s;
+  --tooltip-color: white;
+
+  position: relative;
+  cursor: pointer;
+}
+[data-tooltip]::before{
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  background-color: var(--tooltip-color);
+  padding: .1rem;
+  border-radius: .5rem;
+  transform: translateX(-50%) translateY(calc(-100% - var(--arrow-length))) scale(var(--scale));
+  transition: var(--transition);
+  transform-origin: bottom;
+}
+
+[data-tooltip]::after{
+  content: '';
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  border: var(--arrow-length) solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(-1.1 * var(--arrow-length))) scale(var(--scale));
+  transition: var(--transition);
+  transform-origin: top;
+}
+[data-tooltip]:hover::before, [data-tooltip]:hover::after{
+  --scale:1;
+}
+
+
+/* coloring */
+#fb{
+  color:hsl(224, 75%, 50%) ;
+}
+#insta{
+  color: hsl(340, 75%, 54%);
+}
+#tweet{
+  color: hsl(207, 89%, 49%);
+}
+#Li{
+  color: hsl(202, 95%, 30%);
+}
+#GH{
+  color: hsl(0, 0, 0);
+}
+#YT{
+  color: hsl(0, 79%, 53%);
+}
